@@ -5,7 +5,7 @@ class BlobManager:
         self.blobs = []
         self.selected_blob = None
         self.total_blobs = 0
-        self.thickness = 2
+        self.thickness = 5
         
     def add_blob(self, x, y, r):
         """Add a blob to the array."""
@@ -29,3 +29,21 @@ class BlobManager:
 
     def get_thickness(self):
         return self.thickness
+
+    def reset(self):
+        self.blobs = []
+        self.selected_blob = None
+        self.total_blobs = 0
+
+
+    def delete_selected_blob(self):
+        """Delete the currently selected blob from the blobs list."""
+        if self.selected_blob is not None:
+            try:
+                self.blobs.remove(self.selected_blob)
+                self.selected_blob = None
+            except ValueError:
+                print("Selected blob not found in the blobs list.")
+            self.selected_blob = None
+        else:
+            print("No blob is currently selected.")
